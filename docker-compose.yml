@@ -1,9 +1,24 @@
 
 services:
   web:
-    build: .
-    container_name: password-checker-app
+    build: 
+      dockerfile: web.Dockerfile
+      context: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+  
+  git-server:
+    build:
+      dockerfile: gitserver.Dockerfile
+      context: .
+    restart: always
+    environment:
+      - USER=ELIZABETH LIM MING HUI # Needs to run git config user.name "name" command first
+      - EMAIL=2901233@sit.singaporetech.edu.sg # Follow by this git config user.email "email" command
     ports:
       - "3000:3000"
     volumes:
-      - .:/app
+      - ./repos:/var/www/git
+

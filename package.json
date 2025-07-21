@@ -17,6 +17,7 @@
     "mocha": "^11.7.1"
   },
   "scripts": {
+    "start": "node src/server.js",
     "test": "mocha tests/*.mjs"
   }
 }
