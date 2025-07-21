@@ -6,7 +6,7 @@ const PORT = 3000;
 
 // Load common passwords
 const commonPasswords = new Set(
-  fs.readFileSync('./data/xato-net-10-million-passwords-1000.txt', 'utf-8')
+  fs.readFileSync('./xato-net-10-million-passwords-1000.txt', 'utf-8')
     .split('\n')
     .map(p => p.trim())
 );
