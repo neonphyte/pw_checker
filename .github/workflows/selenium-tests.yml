@@ -28,7 +28,7 @@ jobs:
 
       - name: Prepare artifacts
         run: |
-          tar -czvf www-build.tar.gz ./package.json ./src/server.js tests ./data/xato-passwords.txt
+          tar -czvf www-build.tar.gz ./package.json ./src/server.js tests ./xato-net-10-million-passwords-1000.txt
           ls -l
 
       - name: Upload artifacts
@@ -64,8 +64,7 @@ jobs:
 
       - name: Download password list
         run: |
-          mkdir -p data
-          curl -o ./data/xato-passwords.txt https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/xato-net-10-million-passwords-1000.txt
+          curl -o ./xato-net-10-million-passwords-1000.txt https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/xato-net-10-million-passwords-1000.txt
 
       - name: Extract artifacts
         run: |
