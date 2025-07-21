@@ -1,0 +1,9 @@
+
+services:
+  web:
+    build: .
+    container_name: password-checker-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
