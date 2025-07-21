@@ -90,7 +90,7 @@ jobs:
       - name: Start Node.js server
         run: |
           nohup node src/server.js &  # Start the server in the background
-          sleep 10  # Give the server some time to start
+          sleep 5  # Give the server some time to start
 
       - name: Verify server is running
         run: |

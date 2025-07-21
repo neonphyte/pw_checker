@@ -99,8 +99,8 @@ app.post('/check', (req, res) => {
   res.json({ valid: true });
 });
 
-const server = app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
 
 export { server };
