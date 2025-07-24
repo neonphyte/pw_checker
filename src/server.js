@@ -2,6 +2,10 @@ import express from 'express';
 import fs from 'fs';
 
 const app = express();
+
+// ✅ Disable Express version disclosure
+app.disable('x-powered-by');
+
 const PORT = 80;
 
 // Load common passwords
@@ -90,21 +94,22 @@ app.get('/valid', (req, res) => {
 app.post('/check', (req, res) => {
   const { password } = req.body;
 
-  const notCommon = !commonPasswords.has(password);
+  // Check if password is at least 8 characters
+  if (!password || password.length < 8) {
+    return res.json({ valid: false, message: 'Password must be at least 8 characters long.' });
+  }
 
+  // Check if it's a common password
+  const notCommon = !commonPasswords.has(password);
   if (!notCommon) {
     return res.json({ valid: false, message: 'Password is too common.' });
   }
 
+  // Passed all checks
   res.json({ valid: true });
 });
 
-// const server = app.listen(PORT, () => {
-//   console.log(`Server running at http://localhost:${PORT}`);
-// });
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-// export { server };
